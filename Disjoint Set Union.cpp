@@ -8,6 +8,8 @@ struct DSU{
                 dsu.upd(a, b); // link a and b (if a & b isn't connected)
             Same
                 bool ans = dsu.same(a, b); // True: a & b is connected
+            Components numbers
+                int re = dsu.com;
     */
 	int com;
 	vector<int> p;
