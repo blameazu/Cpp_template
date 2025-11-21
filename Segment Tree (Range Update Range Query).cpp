@@ -11,6 +11,8 @@ struct Seg {
 		Usage:
 			Init
 				Seg seg(len, mode);
+			Build
+				seg.build(v); // use vector<int> v(n+1) (1-based) to init a tree
 			Point update
 				seg.upd(qid, qx, 1); // A_{qid} = qx
 				seg.upd(qid, qx, 2); // A_{qid} += qx
