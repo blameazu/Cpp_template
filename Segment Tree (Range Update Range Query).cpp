@@ -6,6 +6,7 @@ struct Seg {
 			mode: 1 -> MAX
 			mode: 2 -> MIN
 			mode: 3 -> SUM
+			mode: 4 -> XOR
 		Usage:
 			Init
 				Seg seg(len, mode);
@@ -29,6 +30,7 @@ struct Seg {
         if(mode == 1) bsc = -inf;
 		if(mode == 2) bsc = inf;
 		if(mode == 3) bsc = 0;
+		if(mode == 4) bsc = 0;
         tr.resize((n<<2)+87, bsc);
         tag.resize((n<<2)+87, 0);
         tag2.resize((n<<2)+87, 0);
@@ -37,6 +39,7 @@ struct Seg {
 		if(mode == 1) a = max(b, c);
 		if(mode == 2) a = min(b, c);
 		if(mode == 3) a = b + c;
+		if(mode == 4) a = b ^ c;
 	}
 	void build(const vector<int> &v, int l, int r, int id = 1) {
 		if(l == r) return tr[id] = v[l], void();
