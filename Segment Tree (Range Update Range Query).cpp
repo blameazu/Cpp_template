@@ -1,5 +1,3 @@
-// 還沒測過正確性 TODO
-
 struct Seg {
     /*
 		<<Need Define int long long>>
