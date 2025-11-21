@@ -19,12 +19,12 @@ struct Seg {
 	*/
 	int mode = 1;
 	vector<int> tr;
-	int bsc = INT_MIN;
+	int bsc, inf = 1e9;
 	int n;
 	Seg(int n, int MODE = -1) : n(n) {
 		if(MODE != -1) mode = MODE;
-		if(mode == 1) bsc = INT_MIN;
-		if(mode == 2) bsc = INT_MAX;
+		if(mode == 1) bsc = -inf;
+		if(mode == 2) bsc = inf;
 		if(mode == 3) bsc = 0;
 		tr.resize((n<<2)+87, bsc);
 	}

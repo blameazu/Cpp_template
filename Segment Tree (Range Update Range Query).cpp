@@ -24,12 +24,12 @@ struct Seg {
 	*/
     int mode = 1;
 	vector<int> tr, tag, tag2;
-    int bsc = INT_MIN;
+    int bsc, inf = 1e9;
     int n;
 	Seg(int n, int MODE = -1) : n(n) {
         if(MODE != -1) mode = MODE;
-        if(mode == 1) bsc = INT_MIN;
-		if(mode == 2) bsc = INT_MAX;
+        if(mode == 1) bsc = -inf;
+		if(mode == 2) bsc = inf;
 		if(mode == 3) bsc = 0;
         tr.resize((n<<2)+87, bsc);
         tag.resize((n<<2)+87, 0);
@@ -42,7 +42,7 @@ struct Seg {
 	}
 	void build(const vector<int> &v, int l, int r, int id = 1) {
 		if(l == r) return tr[id] = v[l], void();
-		int mid = l+r>>1;
+		int mid = (l+r)>>1;
 		build(v, l, mid, id<<1), build(v, mid+1, r, id<<1|1);
 		pull(tr[id], tr[id<<1], tr[id<<1|1]);
 	}
@@ -79,8 +79,8 @@ struct Seg {
 		}
 		push(id, l, r);
 		int mid = (l+r)>>1;
-		if(ql <= mid) upd(ql, qr, qx, l, mid, id<<1);
-		if(qr > mid) upd(ql, qr, qx, mid+1, r, id<<1|1);
+		if(ql <= mid) upd(ql, qr, qx, l, mid, op, id<<1);
+		if(qr > mid) upd(ql, qr, qx, mid+1, r, op, id<<1|1);
 		pull(tr[id], tr[id<<1], tr[id<<1|1]);
 	}
 	void upd(int qid, int qx, int op) {upd(qid, qid, qx, 1, n, op);}
@@ -94,5 +94,6 @@ struct Seg {
 		if(qr > mid) pull(re, re, qry(ql, qr, mid+1, r, id<<1|1));
 		return re;
 	}
+	int qry(int qid) {return qry(qid, qid, 1, n);}
 	int qry(int ql, int qr) {return qry(ql, qr, 1, n);}
 };
