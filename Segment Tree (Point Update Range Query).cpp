@@ -1,5 +1,7 @@
 struct Seg {
 	/*
+		<<Need Define int long long>>
+		<<1-based>>
 		Declaration:
 			mode: 1 -> MAX
 			mode: 2 -> MIN
