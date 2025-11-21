@@ -13,7 +13,7 @@ struct Seg {
 			Range query
 				int ans = seg.qry(ql, qr); // return [ql, qr]'s ans
 	*/
-	int mode = 1; // TODO
+	int mode = 1;
 	vector<int> tr;
 	int bsc = INT_MIN;
 	int n;
@@ -38,10 +38,10 @@ struct Seg {
 	}
 	void build(const vector<int> &v) {build(v, 1, n);}
 	void upd(int qid, int qx, int l, int r, int op, int id = 1) {
-		if(l == r) return tr[id] = (op == 1 ? qx : tr[id]}+qx), void();
+		if(l == r) return tr[id] = (op == 1 ? qx : tr[id]+qx), void();
 		int mid = (l+r)>>1;
-		if(qid <= mid) upd(qid, qx, l, mid, id<<1);
-		else upd(qid, qx, mid+1, r, id<<1|1);
+		if(qid <= mid) upd(qid, qx, l, mid, op, id<<1);
+		else upd(qid, qx, mid+1, r, op, id<<1|1);
 		pull(tr[id], tr[id<<1], tr[id<<1|1]);
 	}
 	void upd(int qid, int qx, int op = 1) {upd(qid, qx, 1, n, op);}
