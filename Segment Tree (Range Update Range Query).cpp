@@ -52,6 +52,7 @@ struct Seg {
         if(op == 1) {
             if(mode == 3) tr[id] = x*(r-l+1);
             if(mode == 1 || mode == 2) tr[id] = x;
+			tag2[id] = 0;
             tag[id] = x;
         }
 		if(op == 2) {
